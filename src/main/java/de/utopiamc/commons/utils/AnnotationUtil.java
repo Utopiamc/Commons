@@ -1,5 +1,6 @@
 package de.utopiamc.commons.utils;
 
+import de.utopiamc.commons.validate.Validator;
 import lombok.experimental.UtilityClass;
 
 import java.lang.annotation.Annotation;
@@ -16,6 +17,41 @@ public class AnnotationUtil {
 
     public static <A extends Annotation> A getAnnotation(AnnotatedElement element, Class<A> annotationType) {
         return getAnnotation(element, annotationType, new HashSet<>());
+    }
+
+    public static Set<Annotation> getAnnotations(AnnotatedElement element) {
+        return getAnnotations(element, new HashSet<>());
+    }
+
+    private static Set<Annotation> getAnnotations(AnnotatedElement element, Set<Annotation> scannedAnnotations) {
+        Validator.requireNonNull(element, "Element should not be null!");
+
+        if (element instanceof Annotation) {
+            scannedAnnotations.add((Annotation) element);
+        }
+
+        Annotation[] annotations = element.getAnnotations();
+        for (Annotation annotation : annotations) {
+            if (isInLavaLangAnnotationPackage(annotation))
+                continue;
+
+            scannedAnnotations.add(annotation);
+
+            getAnnotations(annotation.annotationType(), scannedAnnotations);
+        }
+
+        if (element instanceof Class) {
+            Class<?> cls = (Class<?>) element;
+
+            for (Class<?> anInterface : cls.getInterfaces())
+                getAnnotations(anInterface, scannedAnnotations);
+
+            Class<?> superclass = cls.getSuperclass();
+            if (superclass != null)
+                getAnnotations(superclass, scannedAnnotations);
+        }
+
+        return scannedAnnotations;
     }
 
     public static <A extends Annotation> Set<Annotation> getAnnotationsWithAnnotation(AnnotatedElement element, Class<A> annotationType) {
