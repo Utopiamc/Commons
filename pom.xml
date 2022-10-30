@@ -6,7 +6,7 @@
 
     <groupId>de.utopiamc</groupId>
     <artifactId>commons</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.2.1-RELEASE</version>
 
     <build>
         <plugins>
@@ -24,7 +24,7 @@
     <repositories>
         <repository>
             <id>utopia</id>
-            <url>http://balance.utopiamc.de:8081/repository/maven-public/</url>
+            <url>https://repo.utopiamc.de/repository/maven-public/</url>
         </repository>
     </repositories>
 
@@ -33,17 +33,40 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apiguardian</groupId>
+            <artifactId>apiguardian-api</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.utopiamc</groupId>
+            <artifactId>utopia-tests</artifactId>
+            <version>1.0.0-RELEASE</version>
         </dependency>
     </dependencies>
 
     <distributionManagement>
         <repository>
             <id>utopia</id>
-            <url>http://balance.utopiamc.de:8081/repository/maven-releases</url>
+            <url>https://repo.utopiamc.de/repository/maven-releases</url>
         </repository>
         <snapshotRepository>
             <id>utopia</id>
-            <url>http://balance.utopiamc.de:8081/repository/maven-snapshots</url>
+            <url>https://repo.utopiamc.de/repository/maven-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 

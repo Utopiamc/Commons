@@ -31,5 +31,10 @@
       <option name="name" value="utopia" />
       <option name="url" value="http://balance.utopiamc.de:8081/repository/maven-public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="utopia" />
+      <option name="name" value="utopia" />
+      <option name="url" value="https://repo.utopiamc.de/repository/maven-public/" />
+    </remote-repository>
   </component>
 </project>
