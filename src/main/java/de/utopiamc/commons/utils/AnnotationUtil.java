@@ -1,6 +1,6 @@
 package de.utopiamc.commons.utils;
 
-import de.utopiamc.commons.validate.Validator;
+import de.utopiamc.validate.Validator;
 import lombok.experimental.UtilityClass;
 
 import java.lang.annotation.Annotation;
