@@ -1,4 +1,4 @@
-package de.utopiamc.commons.validate;
+package de.utopiamc.validate;
 
 import lombok.experimental.UtilityClass;
 
